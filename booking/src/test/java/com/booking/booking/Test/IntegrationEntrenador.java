@@ -38,4 +38,27 @@ public class IntegrationEntrenador {
                 .andReturn();
         assertFalse(result.getResponse().getContentAsString().isEmpty());
     }
+
+    @Test
+    public void getOneTest()throws Exception{
+        cargarDatos();
+        MvcResult result=mockMvc.perform
+                (MockMvcRequestBuilders.get("/api/entrenador/1").accept(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+        assertFalse(result.getResponse().getContentAsString().isEmpty());
+    }
+
+    @Test
+    public void deleteID()throws Exception{
+        cargarDatos();
+        MvcResult result=mockMvc.perform
+                (MockMvcRequestBuilders.delete("/api/entrenador/1").accept(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+        assertFalse(result.getResponse().getContentAsString().isEmpty());
+    }
+
 }

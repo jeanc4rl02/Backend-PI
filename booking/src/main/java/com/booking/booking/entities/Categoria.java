@@ -8,22 +8,18 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Builder
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
-@Table(name = "ciudades")
-public class Ciudades {
+@Table(name = "categorias")
+public class Categoria {
     @Id
     @GeneratedValue
     private Long id;
     @Column
-    private String nombreCiudad;
+    private String nombreCategorias;
 
-    public Ciudades(Long id) {
-        this.id = id;
-        this.nombreCiudad=nombreCiudad;
+    public Categoria(String nombreCategorias) {
+        this.nombreCategorias = nombreCategorias;
     }
 }
-
-
-

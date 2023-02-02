@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CiudadesService {
+public class CiudadService {
 
     private CiudadesRepository ciudadesRepository;
 
     @Autowired
-    public CiudadesService(CiudadesRepository ciudadesRepository){
+    public CiudadService(CiudadesRepository ciudadesRepository){
 
         this.ciudadesRepository= ciudadesRepository;
     }

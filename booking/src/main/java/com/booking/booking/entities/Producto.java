@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "producto")
-public class Productos {
+public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -36,8 +36,8 @@ public class Productos {
     @Column
     private String profesorDisponible;
 
-    public Productos(String categoria, Double calificación, String ubicaciónClase, LocalDate fechaDisponible,
-                     LocalDate horarioDisponible, String nombreClase, String descripcionClase, String profesorDisponible){
+    public Producto(String categoria, Double calificación, String ubicaciónClase, LocalDate fechaDisponible,
+                    LocalDate horarioDisponible, String nombreClase, String descripcionClase, String profesorDisponible){
         this.calificación = calificación;
         this.ubicaciónClase = ubicaciónClase;
         this.fechaDisponible = fechaDisponible;

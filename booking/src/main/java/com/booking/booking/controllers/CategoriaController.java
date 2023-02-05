@@ -13,11 +13,11 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/api/categorias")
-public class CategoriasController {
+public class CategoriaController {
 
     private CategoriaService categoriaService;
 
-    public CategoriasController(CategoriaService categoriaService) {
+    public CategoriaController(CategoriaService categoriaService) {
         this.categoriaService = categoriaService;
     }
 

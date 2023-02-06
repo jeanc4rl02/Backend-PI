@@ -1,7 +1,6 @@
 package com.booking.booking.Test;
 
-import com.booking.booking.entities.Categoria;
-import com.booking.booking.services.CategoriaService;
+import com.booking.booking.controllers.ProductoController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,20 +12,21 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.time.chrono.ChronoLocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
-public class IntegrationCategoria {
+public class IntegrationProducto {
 
     @Autowired
     private MockMvc mockMvc;
     @Autowired
-    private CategoriaService categoriaService;
+    private ProductoController productoController;
 
     private void cargarDatos(){
-        Categoria CategoriaAgregada=categoriaService
-                .post(new Categoria("Artes marciales","ijdijiwdj"));
+
     }
 
     @Test

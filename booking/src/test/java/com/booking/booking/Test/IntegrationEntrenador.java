@@ -1,5 +1,6 @@
 package com.booking.booking.Test;
 
+import com.booking.booking.entities.Ciudad;
 import com.booking.booking.entities.Entrenador;
 import com.booking.booking.services.EntrenadorService;
 import org.junit.jupiter.api.Test;

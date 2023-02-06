@@ -1,6 +1,7 @@
 package com.booking.booking;
 
 import com.booking.booking.entities.Categoria;
+import com.booking.booking.entities.Ciudad;
 import com.booking.booking.entities.Entrenador;
 import com.booking.booking.services.CategoriaService;
 import com.booking.booking.services.EntrenadorService;
@@ -27,7 +28,7 @@ class BookingApplicationTests {
 
 	@Test
 	public void saveCategoria(){
-		categoriaService.post(new Categoria("acuatico"));
+		categoriaService.post(new Categoria("acuatico","jdfnjdsnf"));
 		Assertions.assertEquals("acuatico", categoriaService.getOne(1l).get().getNombreCategorias());
 	}
 

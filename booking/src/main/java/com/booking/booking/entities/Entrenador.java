@@ -7,6 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -24,6 +28,12 @@ public class Entrenador {
     private String descripcion;
     @Column
     private String url;
+
+    @OneToMany(mappedBy = "entrenador",fetch = FetchType.EAGER)
+    private Set<Producto> productos= new HashSet<>();
+
+    @ManyToOne
+    private Ciudad ciudad;
 
     public Entrenador(String nombre, String descripcion, String url) {
         this.nombre = nombre;

@@ -7,20 +7,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "producto")
+@Table(name = "productos")
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column
-    private String categoria;
     @Column
     private Double calificación;
     @Column
@@ -28,23 +29,27 @@ public class Producto {
     @Column
     private LocalDate fechaDisponible;
     @Column
-    private LocalDate horarioDisponible;
+    private LocalTime horarioDisponible;
     @Column
     private String nombreClase;
     @Column
     private String descripcionClase;
-    @Column
-    private String profesorDisponible;
 
-    public Producto(String categoria, Double calificación, String ubicaciónClase, LocalDate fechaDisponible,
-                    LocalDate horarioDisponible, String nombreClase, String descripcionClase, String profesorDisponible){
+    @ManyToOne
+    private Ciudad ciudad;
+
+    @ManyToOne
+    private Entrenador entrenador;
+
+    @ManyToMany(mappedBy = "productoSet")
+    private Set<Categoria> categorias=new HashSet<>();
+
+    public Producto(Double calificación, String ubicaciónClase, LocalDate fechaDisponible, LocalTime horarioDisponible, String nombreClase, String descripcionClase) {
         this.calificación = calificación;
         this.ubicaciónClase = ubicaciónClase;
         this.fechaDisponible = fechaDisponible;
         this.horarioDisponible = horarioDisponible;
         this.nombreClase = nombreClase;
         this.descripcionClase = descripcionClase;
-        this.profesorDisponible = profesorDisponible;
     }
-
 }

@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -19,7 +22,17 @@ public class Categoria {
     @Column
     private String nombreCategorias;
 
-    public Categoria(String nombreCategorias) {
+    @Column
+    private String url;
+
+    @ManyToMany
+    @JoinTable(name = "productosXcategorias",
+            joinColumns = @JoinColumn(name = "categoria_id"),
+            inverseJoinColumns = @JoinColumn(name = "producto_id"))
+    private Set<Producto> productoSet=new HashSet<>();
+
+    public Categoria(String nombreCategorias, String url) {
         this.nombreCategorias = nombreCategorias;
+        this.url = url;
     }
 }

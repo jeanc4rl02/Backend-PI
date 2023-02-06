@@ -43,7 +43,7 @@ public class ProductoController {
 
     @PostMapping
     public ResponseEntity<Producto> post(@RequestBody Producto producto){
-        if(producto.getNombreClase() != null && producto.getNombreClase() != null && producto.getProfesorDisponible() !=null){
+        if(producto.getNombreClase() != null && producto.getNombreClase() != null){
             productoService.post(producto);{
                 return ResponseEntity.status(201).body(producto);
             }

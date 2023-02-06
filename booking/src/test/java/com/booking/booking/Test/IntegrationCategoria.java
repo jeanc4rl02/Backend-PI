@@ -1,8 +1,7 @@
 package com.booking.booking.Test;
 
-import com.booking.booking.entities.Ciudad;
-import com.booking.booking.entities.Entrenador;
-import com.booking.booking.services.EntrenadorService;
+import com.booking.booking.entities.Categoria;
+import com.booking.booking.services.CategoriaService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,22 +17,23 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
-public class IntegrationEntrenador {
+public class IntegrationCategoria {
+
     @Autowired
     private MockMvc mockMvc;
     @Autowired
-    private EntrenadorService entrenadorService;
+    private CategoriaService categoriaService;
 
     private void cargarDatos(){
-        Entrenador EntrenadorAgregado=entrenadorService
-                .post(new Entrenador("Carlos","Entrenador funcional","djhjsdkfjkdsfk"));
+        Categoria CategoriaAgregada=categoriaService
+                .post(new Categoria("Artes marciales","ijdijiwdj"));
     }
 
     @Test
     public void getAllTest()throws Exception{
         cargarDatos();
         MvcResult result=mockMvc.perform
-                (MockMvcRequestBuilders.get("/api/entrenador").accept(MediaType.APPLICATION_JSON))
+                        (MockMvcRequestBuilders.get("/api/categorias").accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
@@ -44,7 +44,7 @@ public class IntegrationEntrenador {
     public void getOneTest()throws Exception{
         cargarDatos();
         MvcResult result=mockMvc.perform
-                (MockMvcRequestBuilders.get("/api/entrenador/1").accept(MediaType.APPLICATION_JSON))
+                        (MockMvcRequestBuilders.get("/api/categorias/1").accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
@@ -55,11 +55,10 @@ public class IntegrationEntrenador {
     public void deleteID()throws Exception{
         cargarDatos();
         MvcResult result=mockMvc.perform
-                (MockMvcRequestBuilders.delete("/api/entrenador/1").accept(MediaType.APPLICATION_JSON))
+                        (MockMvcRequestBuilders.delete("/api/categorias/1").accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
         assertFalse(result.getResponse().getContentAsString().isEmpty());
     }
-
 }

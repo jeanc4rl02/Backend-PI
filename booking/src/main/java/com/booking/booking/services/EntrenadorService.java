@@ -14,26 +14,22 @@ public class EntrenadorService {
     @Autowired
 
     public EntrenadorService(EntrenadorRepository entrenadorRepository) {
+
         this.entrenadorRepository = entrenadorRepository;
     }
 
     public Entrenador post(Entrenador entrenador){
         return entrenadorRepository.save(entrenador);
     }
-
     public List<Entrenador> getAll(){
         return entrenadorRepository.findAll();
     }
-
-
     public Optional<Entrenador> getOne(Long id){
         return entrenadorRepository.findById(id);
     }
-
     public void put(Entrenador entrenador){
         entrenadorRepository.save(entrenador);
     }
-
     public void delete(Long id){
         entrenadorRepository.deleteById(id);
     }

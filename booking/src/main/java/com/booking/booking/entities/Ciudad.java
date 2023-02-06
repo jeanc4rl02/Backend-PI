@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -18,29 +17,31 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "entrenador")
-public class Entrenador {
+@Table(name = "ciudades")
+public class Ciudad {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long id;
     @Column
-    private String nombre;
-    @Column
-    private String descripcion;
+    private String nombreCiudad;
+
     @Column
     private String url;
 
-    @OneToMany(mappedBy = "entrenador",fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "ciudad",fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Producto> productos= new HashSet<>();
 
-    @ManyToOne
+    @OneToMany(mappedBy = "ciudad",fetch = FetchType.EAGER)
     @JsonIgnore
-    private Ciudad ciudad;
+    private Set<Entrenador> entrenadors=new HashSet<>();
 
-    public Entrenador(String nombre, String descripcion, String url) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
+    public Ciudad(String nombreCiudad, String url) {
+        this.nombreCiudad = nombreCiudad;
         this.url = url;
     }
 }
+
+
+

@@ -1,6 +1,5 @@
 package com.booking.booking.controllers;
 
-import com.booking.booking.entities.Entrenador;
 import com.booking.booking.entities.Producto;
 import com.booking.booking.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +70,16 @@ public class ProductoController {
             return ResponseEntity.ok("The removal of the product with the ID: "+id+" has been successfully completed.");
         } else {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No product with ID: "+id+" was found in the database.");
+        }
+    }
+
+    @GetMapping("/{nombre}")
+    public ResponseEntity<List<Producto>> getByCity(@PathVariable String nombre){
+        Optional<List<Producto>> productList = productoService.getByCiudad(nombre);
+        if(productList.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(productoService.getAll());
         }
     }
 }

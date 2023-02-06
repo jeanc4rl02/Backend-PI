@@ -17,11 +17,12 @@ public class CategoriaController {
 
     private CategoriaService categoriaService;
 
+    @Autowired
     public CategoriaController(CategoriaService categoriaService) {
         this.categoriaService = categoriaService;
     }
 
-    @Autowired
+
 
 
 

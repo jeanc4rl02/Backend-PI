@@ -1,5 +1,6 @@
 package com.booking.booking.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +30,7 @@ public class Categoria {
     @JoinTable(name = "productosXcategorias",
             joinColumns = @JoinColumn(name = "categoria_id"),
             inverseJoinColumns = @JoinColumn(name = "producto_id"))
+    @JsonIgnore
     private Set<Producto> productoSet=new HashSet<>();
 
     public Categoria(String nombreCategorias, String url) {

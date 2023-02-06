@@ -28,5 +28,9 @@ public class ProductoService {
 
     public void delete (Long id){ productosRepository.deleteById(id);}
 
+    public Optional<List<Producto>> getByCiudad(String nombre){
+        return productosRepository.findByCiudad(nombre);
+    }
+
 
 }

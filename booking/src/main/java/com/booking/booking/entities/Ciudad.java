@@ -1,5 +1,6 @@
 package com.booking.booking.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,9 +30,11 @@ public class Ciudad {
 
 
     @OneToMany(mappedBy = "ciudad",fetch = FetchType.EAGER)
+    @JsonIgnore
     private Set<Producto> productos= new HashSet<>();
 
     @OneToMany(mappedBy = "ciudad",fetch = FetchType.EAGER)
+    @JsonIgnore
     private Set<Entrenador> entrenadors=new HashSet<>();
 
     public Ciudad(String nombreCiudad, String url) {

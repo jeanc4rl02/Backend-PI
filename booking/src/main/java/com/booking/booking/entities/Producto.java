@@ -1,6 +1,6 @@
 package com.booking.booking.entities;
 
-import com.booking.booking.services.CiudadService;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -43,7 +43,7 @@ public class Producto {
     @Column
     private String descripcionClase;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Ciudad ciudad;
 
     @ManyToOne

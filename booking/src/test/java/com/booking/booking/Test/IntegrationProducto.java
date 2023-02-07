@@ -1,6 +1,8 @@
 package com.booking.booking.Test;
 
 import com.booking.booking.controllers.ProductoController;
+import com.booking.booking.entities.Producto;
+import com.booking.booking.services.ProductoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -23,17 +25,18 @@ public class IntegrationProducto {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
-    private ProductoController productoController;
+    private ProductoService productoService;
 
     private void cargarDatos(){
-
+//        Producto productoCargado= productoService.post(new Producto(4.5,"Bello",,"04:00",
+//                "Natacion","Clase de natacion"));
     }
 
     @Test
     public void getAllTest()throws Exception{
         cargarDatos();
         MvcResult result=mockMvc.perform
-                        (MockMvcRequestBuilders.get("/api/categorias").accept(MediaType.APPLICATION_JSON))
+                        (MockMvcRequestBuilders.get("/api/producto").accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();

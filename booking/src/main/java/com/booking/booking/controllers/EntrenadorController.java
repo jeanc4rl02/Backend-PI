@@ -16,6 +16,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/entrenador")
+@CrossOrigin(origins = "http://localhost:3000")
+
 public class EntrenadorController {
     private EntrenadorService entrenadorService;
     @Autowired

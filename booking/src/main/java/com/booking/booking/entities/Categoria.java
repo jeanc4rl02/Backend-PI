@@ -24,6 +24,9 @@ public class Categoria {
     private String nombreCategorias;
 
     @Column
+    private String descripcionCategorias;
+
+    @Column
     private String url;
 
     @ManyToMany
@@ -33,8 +36,9 @@ public class Categoria {
     @JsonIgnore
     private Set<Producto> productoSet=new HashSet<>();
 
-    public Categoria(String nombreCategorias, String url) {
+    public Categoria(String nombreCategorias, String descripcionCategorias String url) {
         this.nombreCategorias = nombreCategorias;
+        this.descripcionCategorias = descripcionCategorias;
         this.url = url;
     }
 }

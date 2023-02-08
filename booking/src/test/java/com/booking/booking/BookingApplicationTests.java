@@ -28,7 +28,7 @@ class BookingApplicationTests {
 
 	@Test
 	public void saveCategoria(){
-		categoriaService.post(new Categoria("acuatico","jdfnjdsnf"));
+		categoriaService.post(new Categoria("acuatico","Deportes de agua","khjbfdsjbfjsb"));
 		Assertions.assertEquals("acuatico", categoriaService.getOne(1l).get().getNombreCategorias());
 	}
 
